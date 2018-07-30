@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   def show
-    
   end
 
   def new
@@ -10,7 +9,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    #code
   end
 
 

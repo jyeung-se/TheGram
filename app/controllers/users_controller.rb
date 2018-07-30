@@ -15,11 +15,26 @@ class UsersController < ApplicationController
   end
 
   def create
-
+    @user = User.new(set_params)
+    if @user.save
+      flash[:notice] = "Account created!"
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
   end
 
   def edit
     render :edit
+  end
+
+  def update
+    if @user.update(set_params)
+      flash[:notice] = "Updated!!"
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -29,7 +44,7 @@ class UsersController < ApplicationController
   private
 
   def set_params
-    params.require(:user).permit(:username, :first_name, :last_name, :email, :password)
+    params.require(:user).permit(:username, :first_name, :last_name, :email)
   end
 
   def set_user

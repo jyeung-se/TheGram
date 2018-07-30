@@ -1,6 +1,9 @@
-<center><h1><%= @user.username %><br></h1></center>
+<center><h2><%= @user.username %><br></h2>
 
-<center><% @user.posts.each do |post| %>
+<%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %><br><br>
+
+
+<% @user.posts.each do |post| %>
   Post: <%= post.caption %><br>
   <%= post.picture %><br><br>
 <% end %></center>

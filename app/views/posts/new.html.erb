@@ -1,9 +1,3 @@
-<%= <%= form_for @post do |f| %>
+<center><h2>Create New Post</h2><center>
 
-  <%= f.label :caption %>
-  <%= f.text_field :caption %>
-
-  <%= f.label "Picture URL" %>
-  <%= f.text_field :caption %>
-
-<% end %> %>
+<%= render partial: "form" %>
