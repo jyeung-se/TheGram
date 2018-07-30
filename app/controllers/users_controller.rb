@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :edit, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -30,8 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(set_params)
-      flash[:notice] = "Updated!!"
-      redirect_to user_path(@user)
+      redirect_to user_path
     else
       render :edit
     end

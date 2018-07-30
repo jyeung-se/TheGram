@@ -1,7 +1,7 @@
-<center><h2><%= @user.username %><br></h2>
+<center><h2><%= @user.username %> | Following | Followers |<br></h2>
 
-<%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %><br><br>
-
+<%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %>
+<br><br>
 
 <% @user.posts.each do |post| %>
   Post: <%= post.caption %><br>

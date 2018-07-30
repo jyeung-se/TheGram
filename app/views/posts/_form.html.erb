@@ -4,11 +4,18 @@
   <%= f.text_area :caption %><br><br>
 
   <%= f.label "Picture URL" %>
-  <%= f.text_field :caption %><br><br>
+  <%= f.text_field :picture %><br><br>
+
+  <%= f.label "User: " %>
+  <%= f.collection_select :user_id, User.all, :id, :username %><br><br>
 
   <%= f.submit %>
 
 <% end %>
+
+<%= link_to "All users", users_path %>
+<%= link_to "All posts", posts_path %>
+
 
 
 </center>
