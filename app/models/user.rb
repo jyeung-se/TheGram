@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
-
+  has_many :following, through: :active_relationships, source: :followed
 
   def follows
     self.active_relationships.map do |followed|
@@ -21,11 +21,11 @@ class User < ApplicationRecord
     self.active_relationships.create(followed_id: user_id)
   end
 
-  def unfollow(user_id)
-    @user = User.find(user_id)
-    if @user.active_relationships.user_id == user_id
-      @user.active_relationships.destroy
-    end
-  end
+  # def unfollow(user_id)
+  #   @user = User.find(user_id)
+  #   if @user.active_relationships.user_id == user_id
+  #     @user.active_relationships.destroy
+  #   end
+  # end
 
 end

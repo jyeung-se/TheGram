@@ -1,0 +1,6 @@
+<center><h1><%= @user.username %><br></h1></center>
+
+<center><% @user.posts.each do |post| %>
+  Post: <%= post.caption %><br>
+  <%= post.picture %><br><br>
+<% end %></center>
