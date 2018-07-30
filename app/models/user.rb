@@ -5,17 +5,27 @@ class User < ApplicationRecord
                                   dependent: :destroy
 
 
+  def follows
+    self.active_relationships.map do |followed|
+      User.find(followed.followed_id)
+    end
+  end
+
   def followers
-      @all_followers = self.active_relationships.map do |followed|
-        User.find(followed.followed_id).username
-      end
+    self.active_relationships.map do |follower|
+      User.find(follower.follower_id)
+    end
   end
 
-  def following
-    # @all_following
+  def follow(user_id)
+    self.active_relationships.create(followed_id: user_id)
   end
 
-  def self.followers #helper methods for later on
-    # @
+  def unfollow(user_id)
+    @user = User.find(user_id)
+    if @user.active_relationships.user_id == user_id
+      @user.active_relationships.destroy
+    end
   end
+
 end
