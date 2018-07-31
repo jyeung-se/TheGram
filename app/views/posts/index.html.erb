@@ -4,6 +4,6 @@
    <% @posts.each do |post| %>
       <h2><%= link_to @users.find(post.user_id).username, user_path(post.user_id) %> | Following | Followers</h2>
       <%= post.caption %><br><br>
-      <%= image_tag post.picture.url(:medium) %><br><br><br>
+      <%= image_tag post.picture.url(:medium), class:"avater" %><br><br><br>
   <% end %>
 </center>
