@@ -7,6 +7,6 @@
 <br><br>
 <h3><u>Users</u></h3>
 <% @users.each do |user| %>
-<%= link_to user.username, user  %><br><br>
+<%= image_tag user.avatar.url(:real_small) %> <%= link_to user.username, user  %><br><br>
 <% end %>
 </center>

@@ -5,6 +5,9 @@ class User < ApplicationRecord
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
 
+  has_attached_file :avatar, styles: { thumb: "77x77>", real_small: "25x25>"  }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   def follows
     self.active_relationships.map do |followed|
       User.find(followed.followed_id)

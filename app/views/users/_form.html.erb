@@ -1,5 +1,5 @@
 <center>
-<%= form_for @user do |f| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %><br><br>
 
@@ -11,6 +11,9 @@
 
   <%= f.label :email %>
   <%= f.text_field :email %><br><br>
+
+  <%= f.label "Profile Photo" %>
+  <%= f.file_field :avatar %><br><br>
 
   <%= f.submit %>
 <% end %>
