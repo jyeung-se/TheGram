@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_184200) do
+ActiveRecord::Schema.define(version: 2018_07_31_132119) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 2018_07_30_184200) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture_file_name"
+    t.string "picture_content_type"
+    t.integer "picture_file_size"
+    t.datetime "picture_updated_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
