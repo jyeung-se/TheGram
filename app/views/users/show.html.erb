@@ -1,5 +1,4 @@
-<center> <%= image_tag @user.avatar.url(:thumb), class:"avater"  %> <h2><%= @user.username %> | Following | Followers |<br></h2>
-
+<center> <%= image_tag @user.avatar.url(:thumb), class:"avater"  %> <h2><%= @user.username %> | <%= @user.posts.count %> <%= "Posts" %> | <%= @user.following.count %> <%= link_to "Following", following_path(@user) %> | <%= @user.followers.count %> <%= link_to "Followers", followers_path(@user) %> |<br></h2>
 
 
 <%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :followers, :following]
 
   def index
     @users = User.all
@@ -40,6 +40,15 @@ class UsersController < ApplicationController
   def destroy
 
   end
+
+  def followers
+    render :followers
+  end
+
+  def following
+    render :following
+  end
+
 
   private
 

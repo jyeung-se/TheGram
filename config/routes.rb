@@ -3,5 +3,10 @@ Rails.application.routes.draw do
   resources :comments
   resources :likes
   resources :users
+
+  get '/users/:id/followers', to: 'users#followers', as: 'followers'
+  get '/users/:id/following', to: 'users#following', as: 'following'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
