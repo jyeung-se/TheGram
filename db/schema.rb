@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_07_31_144324) do
   create_table "posts", force: :cascade do |t|
     t.string "caption"
     t.string "picture"
+    t.string "comment"
+    t.integer "like"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

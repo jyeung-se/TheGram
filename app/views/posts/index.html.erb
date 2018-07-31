@@ -3,7 +3,7 @@
 
   <% @posts = @posts.reverse%>
    <% @posts.each do |post| %>
-      <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %> | Following | Followers</h2>
+      <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %></h2>
       <%= post.caption %><br><br>
       <%= image_tag post.picture.url(:medium)%><br><br><br>
   <% end %>
