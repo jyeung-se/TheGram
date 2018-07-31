@@ -3,7 +3,8 @@
 <%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %>
 <br><br>
 
-<% @user.posts.each do |post| %>
+<% posts = @user.posts.order(created_at: :desc) %>
+<% posts.each do |post| %>
         <%= image_tag post.picture.url(:medium) %><br>
   Caption: <%= post.caption %><br><br>
 <% end %></center>
