@@ -26,6 +26,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.like
+    # TODO Add like counter
+  end
+
+
   private
   def set_params
     params.require(:post).permit(:caption, :picture, :user_id)

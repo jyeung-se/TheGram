@@ -9,9 +9,6 @@
   <%= f.label "User: " %>
   <%= f.collection_select :user_id, User.all, :id, :username %><br><br>
 
-  <%= f.text_area :like, placeholder: 'Context', style: 'display:none' %>
-  <%= f.text_area :comment, placeholder: 'Context', style: 'display:none' %>
-
   <%= f.submit %>
 
 <% end %>
