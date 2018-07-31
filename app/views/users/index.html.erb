@@ -1,5 +1,12 @@
-<center><h1>Search for Users</h1></center>
+<center><h1>Browse and Search for Users</h1></center>
 <center><%= form_tag(users_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search People" %>
     <%= submit_tag "Search" %>
-<% end %></center>
+<% end %>
+
+<br><br>
+<h3><u>Users</u></h3>
+<% @users.each do |user| %>
+<%= link_to user.username, user  %><br><br>
+<% end %>
+</center>

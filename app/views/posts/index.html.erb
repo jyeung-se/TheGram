@@ -1,5 +1,6 @@
 <center>
-  <%= link_to "All users", users_path %>
+  <%= link_to "All users", users_path %> <%= link_to "Create New User", new_user_path %>
+  <% @posts = @posts.order(created_at: :desc) %>
    <% @posts.each do |post| %>
       <h2><%= link_to @users.find(post.user_id).username, user_path(post.user_id) %> | Following | Followers</h2>
       <%= post.caption %><br><br>
