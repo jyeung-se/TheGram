@@ -7,7 +7,7 @@
 
 
 
-<% posts = @user.posts.order(created_at: :desc) %>
+<% posts = @user.posts.reverse %>
 <% posts.each do |post| %>
         <%= image_tag post.picture.url(:medium) %><br>
   Caption: <%= post.caption %><br><br>
