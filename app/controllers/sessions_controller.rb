@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   def new
     # don't need anything in here, cause we're not setting up a
     # blank model to couple with the form
-    byebug
   end
 
   def create
@@ -21,7 +20,6 @@ class SessionsController < ApplicationController
       # the user is who they say they are
       session[:logged_in_user_id] = @user.id
       flash[:notice] = "Login Successful"
-      byebug
       redirect_to user_path(@user)
     else
       flash[:notice] = "Invalid username or password. Please try again."

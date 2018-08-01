@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :followers, :following]
+  skip_before_action :authorized, only: [:new, :create, :show, :edit, :update]
+  before_action :set_user#, only: [:show, :edit, :update, :destroy, :followers, :following]
 
   def index
     @users = User.all
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(set_params)
+    if @user.update(user_params)
       flash[:notice] = "Your updates have been saved!"
       redirect_to user_path
     else
@@ -63,7 +63,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    byebug
     @user = User.find(params[:id])
   end
 

@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
-    byebug
     unless logged_in?
       flash[:notice] = "Please log in to see this content."
       redirect_to login_path
