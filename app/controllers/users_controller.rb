@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def create
     # byebug
-    @user = User.new(set_params)
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Account created!"
       redirect_to user_path(@user)
@@ -52,8 +52,8 @@ class UsersController < ApplicationController
 
   private
 
-  def set_params
-    params.require(:user).permit(:username, :first_name, :last_name, :email, :avatar)
+  def user_params
+    params.require(:user).permit(:username, :password, :avatar)
   end
 
   def set_user

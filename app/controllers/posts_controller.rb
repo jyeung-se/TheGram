@@ -1,9 +1,14 @@
 class PostsController < ApplicationController
+  before_action :authorized
 
   def index
-    @posts = Post.all
-    @users = User.all
-    render :index
+    if logged_in?
+      @posts = Post.all
+      @users = User.all
+      render :index
+    else
+      redirect_to sessions_path# or force a login
+    end
   end
 
   def show

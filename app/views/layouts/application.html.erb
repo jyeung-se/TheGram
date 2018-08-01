@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <%= link_to "Logout", sessions_path, method: :delete %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+    <% end %>
     <center><h1><%= link_to "TheGram", posts_path %></h1></center>
     <%= yield %>
   </body>
