@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   skip_before_action :set_user, only: [:followers, :following]
 
   def index
+
     @users = User.all
+
   end
 
   def show
