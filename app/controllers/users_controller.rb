@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create, :show, :edit, :update]
   before_action :set_user
+  skip_before_action :set_user, only: [:followers, :following]
 
   def index
 
@@ -53,11 +54,18 @@ class UsersController < ApplicationController
     redirect_to login_path
   end
 
+
   def followers
+    @user = User.find_by(id: params[:id])
+    @followers = @user.followers
+    # byebug
+
     render :followers
   end
 
   def following
+    @user = User.find_by(id: params[:id])
+    @following = @user.following
     render :following
   end
 

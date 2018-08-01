@@ -1,2 +1,10 @@
+<center>
+<h2><%= "#{@user.username} is following:" %></h2>
 
-<h1>Did I make it?!</h1>
+<ul>
+<% @following.each do |following| %>
+  <%= link_to following.username, user_path(following) %>
+<% end %>
+</ul>
+
+</center>
