@@ -1,4 +1,7 @@
-<center><%= form_tag sessions_path do %>
+
+<center><h2><%= flash[:notice] %></h2></center><br>
+
+<center><%= form_tag login_path do %>
   <%= label_tag "Username" %>
   <%= text_field_tag :username %>
   <%= label_tag "Password" %>

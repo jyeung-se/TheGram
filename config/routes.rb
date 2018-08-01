@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   get '/users/:id/following', to: 'users#following', as: 'following'
 
   get "signup", to: "users#new", as: "signup"
-  get "login", to: "sessions#new", as: "login"
-  post "sessions", to: "sessions#create", as: "sessions"
+  get "/login", to: "sessions#new", as: "login"
+  post "/login", to: "sessions#create"
 
-  delete "sessions", to: "sessions#destroy", as: "logout"
+  # delete "sessions", to: "sessions#destroy", as: "logout"
 
   # post '/posts/', to: 'posts#like', as: 'likes'
 

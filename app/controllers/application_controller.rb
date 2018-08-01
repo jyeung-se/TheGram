@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper_method :logged_in?
+  before_action :authorized
+  helper_method :logged_in?, :current_user
 
   def current_user
     if session[:user_id]
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
-    redirect_to login_path unless logged_in?
+    byebug
+    unless logged_in?
+      flash[:notice] = "Please log in to see this content."
+      redirect_to login_path
+    end
   end
 end
