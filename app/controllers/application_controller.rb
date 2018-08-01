@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user
 
   def current_user
-    if session[:user_id]
-      @user = User.find_by(id: session[:user_id])
+    if session[:logged_in_user_id]
+      @user = User.find_by(id: session[:logged_in_user_id])
     else
     end
   end
@@ -19,4 +19,6 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+
 end

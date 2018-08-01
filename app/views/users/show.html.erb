@@ -2,7 +2,10 @@
 
 <h3><%= flash[:notice] %></h3>
 
-<%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %>
+<% if @user.id == session[:logged_in_user_id] %>
+  <%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %>
+<% end %>
+
 <br><br>
 
 

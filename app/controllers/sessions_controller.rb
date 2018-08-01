@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   skip_before_action :authorized, only: [:new, :create]
 
   def new
@@ -10,14 +9,8 @@ class SessionsController < ApplicationController
   def create
     # no strong params cause there is no mass assignment
     @user = User.find_by(username: params[:username])
-    # if @user && @user.authenticate(params[:password])
-    #   session[:user_id] = @user.id
-    #   redirect_to @user
-    # else
-    #   redirect_to login_path
-    # end
+
     if !!@user && @user.authenticate(params[:password])
-      # the user is who they say they are
       session[:logged_in_user_id] = @user.id
       flash[:notice] = "Login Successful"
       redirect_to user_path(@user)

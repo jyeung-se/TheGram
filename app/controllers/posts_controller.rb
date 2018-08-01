@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   skip_before_action :authorized, only: [:new, :create, :show, :edit]
-  before_action :authorized
 
   def index
     if logged_in?
       @posts = Post.all
       @users = User.all
+      @like = Like.new
       render :index
     else
       redirect_to sessions_path# or force a login
@@ -30,11 +30,6 @@ class PostsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def like
-    @post = Post.like
-    # TODO Add like counter
   end
 
 

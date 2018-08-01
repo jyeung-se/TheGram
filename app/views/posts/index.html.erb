@@ -4,8 +4,18 @@
   <% @posts = @posts.reverse%>
    <% @posts.each do |post| %>
       <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %></h2>
-      <%= post.caption %><br><br>
-      <%= image_tag post.picture.url(:medium)%><br><br><br>
-      <%= link_to "Like", posts_path %>
+      <%= image_tag post.picture.url(:medium)%><br>
+      <%= @users.find(post.user_id).username %>: <%= post.caption %><br><br>
+      <% if post.likes.any? %>
+      Likes: <%= post.likes.first.like_count %>
+      <% end %>
+
+
+      <%= form_for @like do |f| %>
+        <%= hidden_field_tag "post", post.id  %>
+        <%= f.submit "Like!"%>
+      <% end %>
+
+
   <% end %>
 </center>

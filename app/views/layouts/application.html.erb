@@ -11,9 +11,13 @@
 
   <body>
     <% if logged_in? %>
-      <%= link_to "Logout", sessions_path, method: :delete %>
+      <%= link_to "Logout", logout_path, method: :delete %>
     <% else %>
       <%= link_to "Login", login_path %>
+    <% end %>
+
+    <% if logged_in? %>
+      <%= link_to "My Profile", user_path(session[:logged_in_user_id])%>
     <% end %>
     <center><h1><%= link_to "TheGram", posts_path %></h1></center>
     <%= yield %>

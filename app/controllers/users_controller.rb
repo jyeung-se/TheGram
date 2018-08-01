@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create, :show, :edit, :update]
-  before_action :set_user#, only: [:show, :edit, :update, :destroy, :followers, :following]
+  before_action :set_user
 
   def index
     @users = User.all
   end
 
   def show
-    render :show
+    if @user.id != params[:id]
+      @user = User.find_by(id: params[:id])
+    else
+      render :show
+    end
   end
 
   def new
@@ -63,7 +67,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: session[:logged_in_user_id])
   end
 
 end
