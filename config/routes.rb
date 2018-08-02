@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :likes
   resources :users#, only: [:new, :create, :show, :edit, :update]
+  resources :relationships
 
   get '/users/:id/followers', to: 'users#followers', as: 'followers'
   get '/users/:id/following', to: 'users#following', as: 'following'

@@ -15,8 +15,21 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: { thumb: "77x77>", real_small: "77x77>"  }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
-  def follow(user_id)
+
+  def following?(user_id)
+    if self.active_relationships.find_by(followed_id: user_id) != nil
+      true
+    else
+      false
+    end
+  end
+
+  def follow!(user_id)
     self.active_relationships.create(followed_id: user_id)
+  end
+
+  def unfollow!(user_id)
+    self.active_relationships.find_by(followed_id: user_id).destroy
   end
 
 end
