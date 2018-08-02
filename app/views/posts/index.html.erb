@@ -7,14 +7,22 @@
       <%= image_tag post.picture.url(:medium)%><br>
       <%= @users.find(post.user_id).username %>: <%= post.caption %><br><br>
       <% if post.likes.any? %>
-      Likes: <%= post.likes.first.like_count %>
+        Likes: <%= post.likes.first.like_count %>
       <% end %>
 
 
-      <%= form_for @like do |f| %>
-        <%= hidden_field_tag "post", post.id  %>
-        <%= f.submit "Like!"%>
+
+      <% counter = 0 %>
+      <% current_user.likes.each do |user_like| %>
+        <% if user_like.post_id == post.id %>
+          MADE IT <br>
+        <% else %>
+          <% while counter == 0 %>
+            DIND'T MAKE IT
+            <% counter += 1 %>
+          <%end %>
       <% end %>
+    <% end %>
 
 
   <% end %>
