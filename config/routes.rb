@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   delete "sessions", to: "sessions#destroy", as: "logout"
 
+
   # post '/posts/', to: 'posts#like', as: 'likes'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

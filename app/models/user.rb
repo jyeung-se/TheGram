@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_attached_file :avatar, styles: { thumb: "77x77>", real_small: "77x77>"  }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  validates :username, :password, :avatar, presence: true
 
 
   def following?(user_id)

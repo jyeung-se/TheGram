@@ -1,10 +1,25 @@
-<center><%= @post.caption %>
+<center>
 
-<%= image_tag post.picture.url(:medium) %>
-<%=  %>
-<h3>Comments</h3>
+<%= image_tag @post.picture.url(:medium) %>
+
+<br>
+<%= @post.caption %>
+<br><br>
+
+
 <% @post.comments.each do |comment| %>
-  <p><%= comment.comment %></p>
+  <p><b><%= current_user.username %></b>: <%= comment.content %></p>
 <% end %>
+
+<!-- Insert Comment Box here -->
+<%= form_for @comment do |f| %>
+  <b><%= f.label "Comment" %>s<b><br>
+  <%= f.text_area :content %><br><br>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <br><br>
+  <%= f.submit "Comment" %>
+<% end %>
+
 
 </center>
