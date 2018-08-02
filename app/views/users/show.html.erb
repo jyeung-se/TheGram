@@ -9,7 +9,7 @@
 
 <% if @user.id == session[:logged_in_user_id] %>
   <%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %>
-  <%= link_to 'Delete', user_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <%= link_to 'Delete Account', user_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <% end %>
 
 <!-- TEMPORARILY DELETE THE BELOW RENDER PARTIALS TO BE ABLE TO SEE ALL SHOW PAGES FUNCTIONING -->

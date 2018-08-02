@@ -15,7 +15,7 @@
         <%= form_for @like do |f| %>
           <%= hidden_field_tag "post", post.id  %>
           <%= hidden_field_tag "unlike", "unlike" %>
-          <%= f.submit "Unlike!"%>
+          <%= f.submit "Unlike!"%><br><br>
         <% end %>
       </div>
     <% end %>
@@ -25,7 +25,7 @@
         <%= form_for @like do |f| %>
           <%= hidden_field_tag "post", post.id  %>
           <%= hidden_field_tag "like", "like" %>
-          <%= f.submit "Like!"%>
+          <%= f.submit "Like!"%> <br><br>
         <% end %>
       </div>
     <% end %>
