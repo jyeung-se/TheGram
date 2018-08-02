@@ -1,5 +1,8 @@
 
-  <%= form_for(current_user.passive_relationships.build(followed_id: @user.id)) do |f| %>
-    <div><%= f.hidden_field :followed_id %></div>
-    <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+<% if !!current_user.active_relationships.find_by(followed_id: @user.id) == true %>
+  <% else %>
+  <%= form_for(current_user.active_relationships.build(followed_id: @user.id)) do |f| %>
+  <div><%= f.hidden_field :followed_id %></div>
+  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+  <% end %>
 <% end %>

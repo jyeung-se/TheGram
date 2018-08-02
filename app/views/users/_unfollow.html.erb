@@ -1,5 +1,11 @@
+<%# if current_user.followers %>
 
-<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-             html: { method: :delete }) do |f| %>
-  <%= f.submit "Unfollow", class: "btn btn-large" %>
+<!-- If currently not following the user -->
+<% if !!current_user.active_relationships.find_by(followed_id: @user.id) == false %>
+
+<% else %>
+  <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+               html: { method: :delete }) do |f| %>
+    <%= f.submit "Unfollow", class: "btn btn-large" %>
+    <% end %>
 <% end %>
