@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    byebug
     @post = Post.new(set_params)
 
     if @post.save
@@ -32,6 +33,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.destroy
+    flash[:notice] = "Post deleted!"
+    redirect_to user_path(current_user.id)
+  end
 
   private
   def set_params
