@@ -3,10 +3,15 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def index
-
-    @users = User.all
-
-  end
+      # byebug
+      if params[:search]
+        @users = User.all.select do |user|
+           user.name == params[:search]
+        end
+      else
+        @users = User.all
+      end
+    end
 
   def show
     if @user.id != params[:id]
@@ -65,7 +70,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :avatar)
+    params.require(:user).permit(:username, :password, :avatar, :search)
   end
 
   def set_user
