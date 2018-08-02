@@ -2,5 +2,9 @@
 
 <%= image_tag post.picture.url(:medium) %>
 <%=  %>
+<h3>Comments</h3>
+<% @post.comments.each do |comment| %>
+  <p><%= comment.comment %></p>
+<% end %>
 
 </center>

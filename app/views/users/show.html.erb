@@ -3,17 +3,23 @@
  <br>
    <%= image_tag @user.avatar.url(:thumb), class:"avater"  %> <h2><%= @user.username %> | <%= @user.posts.count %> <%= "Posts" %> | <%= @user.following.count %> <%= link_to "Following", following_path(@user) %> | <%= @user.followers.count %> <%= link_to "Followers", followers_path(@user) %> |<br></h2>
 
-<br>
+
+
 
 
 <h3><%= flash[:notice] %></h3>
+
 
 <% if @user.id == session[:logged_in_user_id] %>
   <%= link_to "New Post", new_post_path %> <%= link_to "Edit User", edit_user_path(@user) %>
 <% end %>
 
-<br><br>
+<!-- TEMPORARILY DELETE THE BELOW RENDER PARTIALS TO BE ABLE TO SEE ALL SHOW PAGES FUNCTIONING -->
+<%= render partial: "follow" %>
+<%= render partial: "unfollow" %>
+<!-- TEMPORARILY DELETE THE ABOVE RENDER PARTIALS TO BE ABLE TO SEE ALL SHOW PAGES FUNCTIONING -->
 
+<br><br>
 
 
 <% posts = @user.posts.reverse %>
