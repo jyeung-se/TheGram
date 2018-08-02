@@ -12,11 +12,13 @@ class PostsController < ApplicationController
     end
   end
 
+
+
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
     render :show
-  end
+end
 
   def new
     @post = Post.new
@@ -24,7 +26,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug
     @post = Post.new(set_params)
 
     if @post.save
@@ -36,7 +37,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    # byebug
+    Post.find(params[:id]).destroy
     flash[:notice] = "Post deleted!"
     redirect_to user_path(current_user.id)
   end

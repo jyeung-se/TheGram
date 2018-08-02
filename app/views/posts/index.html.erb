@@ -1,7 +1,7 @@
 <center>
   <%= link_to "All users", users_path %>
 
-  <% current_user.following.each do |user| %>
+  <% current_user.following.reverse.each do |user| %>
       <% user.posts.each do |post| %>
         <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %></h2>
         <%= link_to image_tag(post.picture.url(:medium), :class => "class_name"), user_path(post.user_id); %><br>

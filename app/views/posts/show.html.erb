@@ -7,6 +7,10 @@
 <br><br>
 
 
+<% if @post.user_id == current_user.id %>
+<%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+<% end %>
+
 <% @post.comments.each do |comment| %>
   <p><b><%= link_to User.find(comment.user_id).username, user_path(User.find(comment.user_id)) %></b>: <%= comment.content %></p>
 <% end %>
