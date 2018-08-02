@@ -7,14 +7,29 @@
       <%= image_tag post.picture.url(:medium)%><br>
       <%= @users.find(post.user_id).username %>: <%= post.caption %><br><br>
       <% if post.likes.any? %>
-      Likes: <%= post.likes.first.like_count %>
+        Likes: <%= post.likes.count %>
       <% end %>
 
 
-      <%= form_for @like do |f| %>
-        <%= hidden_field_tag "post", post.id  %>
-        <%= f.submit "Like!"%>
-      <% end %>
+    <% if current_user.likes.find_by(post_id: post.id) %>
+      <div class = "unlike_button">
+        <%= form_for @like do |f| %>
+          <%= hidden_field_tag "post", post.id  %>
+          <%= hidden_field_tag "unlike", "unlike" %>
+          <%= f.submit "Unlike!"%>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if !current_user.likes.find_by(post_id: post.id) %>
+      <div class = "like_button">
+        <%= form_for @like do |f| %>
+          <%= hidden_field_tag "post", post.id  %>
+          <%= hidden_field_tag "like", "like" %>
+          <%= f.submit "Like!"%>
+        <% end %>
+      </div>
+    <% end %>
 
 
   <% end %>
