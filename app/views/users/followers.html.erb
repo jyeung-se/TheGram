@@ -3,7 +3,7 @@
 
 <ul>
 <% @followers.each do |follower| %>
-  <%= link_to follower.username, user_path(follower) %><br><br>
+  <%= image_tag follower.avatar.url(:real_small), class:"avater" %> <%= link_to follower.username, user_path(follower) %><br><br>
 <% end %>
 </ul>
 
