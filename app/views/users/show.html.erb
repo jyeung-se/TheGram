@@ -1,10 +1,7 @@
 <center>
 
  <br>
-   <%= image_tag @user.avatar.url(:thumb), class:"avater"  %> <h2><%= @user.username %> | <%= @user.posts.count %> <%= "Posts" %> | <%= @user.following.count %> <%= link_to "Following", following_path(@user) %> | <%= @user.followers.count %> <%= link_to "Followers", followers_path(@user) %> |<br></h2>
-
-
-
+ <%= image_tag @user.avatar.url(:thumb), class:"avater"  %> <h2><%= @user.username %> | <%= @user.posts.count %> <%= "Posts" %> | <%= @user.following.count %> <%= link_to "Following", following_path(@user) %> | <%= @user.followers.count %> <%= link_to "Followers", followers_path(@user) %> |<br></h2>
 
 
 <h3><%= flash[:notice] %></h3>

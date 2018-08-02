@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       # byebug
       if params[:search]
         @users = User.all.select do |user|
-           user.name == params[:search]
+           user.username == params[:search]
         end
       else
         @users = User.all

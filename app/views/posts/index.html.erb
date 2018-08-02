@@ -4,11 +4,12 @@
   <% @posts = @posts.reverse%>
    <% @posts.each do |post| %>
       <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %></h2>
-      <%= image_tag post.picture.url(:medium)%><br>
+      <%= link_to image_tag(post.picture.url(:medium), :class => "class_name"), user_path(post.user_id); %><br>
       <%= @users.find(post.user_id).username %>: <%= post.caption %><br><br>
       <% if post.likes.any? %>
         Likes: <%= post.likes.count %>
       <% end %>
+
 
 
     <% if current_user.likes.find_by(post_id: post.id) %>
