@@ -1,14 +1,12 @@
 class CommentsController < ApplicationController
   before_action :authorized
 
-  class CommentsController < ApplicationController
   def create
-    @post = Post.find(params[:post_id])
-
-    if @post.comments.create!(comment_params).merge(user: current_user))
+    @post = Post.find(params[:comment][:post_id])
+    if @post.comments.create!(comment_params)
       redirect_to post_path(@post)
     else
-      render :new
+      render :show
     end
   end
 
