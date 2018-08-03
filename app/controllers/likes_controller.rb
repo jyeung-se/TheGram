@@ -14,10 +14,8 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post])
 
     if params[:like] == "like"
-      if current_user.likes.count == 0 || @post.likes.count == 0
-        Like.create(like_count: 0, post_id: params[:post], user_id: current_user.id)
-        @post.likes << Like.last
-      end
+      Like.create(like_count: 0, post_id: params[:post], user_id: current_user.id)
+      @post.likes << Like.last
     elsif params[:unlike] == "unlike"
       delete_me = current_user.likes.find_by(post_id: @post.id)
       delete_me.destroy
