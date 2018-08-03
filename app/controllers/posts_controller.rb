@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     if logged_in?
       if current_user.posts.count == 0
-        flash[:notice] = "You know... it would be NICE to contribute to TheGram before looking at others' posts."
+        flash[:notice] = "Make your first post before checkin out other's photos!"
         redirect_to new_post_path
       end
         @posts = Post.all

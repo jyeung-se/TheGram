@@ -18,9 +18,7 @@
       <% allPosts << photo %>
     <% end %>
   <% end %>
-  <%# current_user.posts.each do |current_photo| %>
-    <% allPosts << current_user.posts.last %>
-  <%# end %>
+  <% allPosts << current_user.posts.last %>
   <% allPosts = allPosts.sort_by &:created_at %>
   <% allPosts = allPosts.reverse %>
   <% allPosts.each do |post| %>
