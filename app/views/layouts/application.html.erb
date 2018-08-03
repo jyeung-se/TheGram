@@ -19,8 +19,8 @@
 
   <body>
     <% if logged_in? %>
-    <%= link_to "My Profile", user_path(session[:logged_in_user_id])%>
-    <% end %> | |
+    <%= link_to "My Profile", user_path(session[:logged_in_user_id])%> |  |
+    <% end %>
 
     <% if logged_in? %>
       <%= link_to "Logout", logout_path, method: :delete %>
