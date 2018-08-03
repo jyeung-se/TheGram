@@ -1,6 +1,6 @@
 # TheGram
 
-A project created by Sean Conrad and Jack Yeung at Flatiron School and not based off anything in particular
+A Ruby on Rails project created by Sean Conrad and Jack Yeung at Flatiron School and not based off anything in particular
 
 You'll need to install ImageMagick through homebrew
 
@@ -12,8 +12,12 @@ Install ImageMagick
 ```
 brew install imagemagick
 ```
+Clone app
+```
+git clone https://github.com/seanraad123/TheGram.git
+```
 
-Bundle and run server
+Go into the app root directory and Bundle and run server
 ```
 bundle install
 rails s -b 0.0.0.0
