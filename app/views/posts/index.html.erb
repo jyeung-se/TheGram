@@ -12,49 +12,58 @@
    <p>Click 'Search Users' at the top to search for people to follow!</p>
   <% end %>
 
+  <% allPosts = [] %>
   <% current_user.following.reverse.each do |user| %>
-      <% user.posts.each do |post| %>
-        <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %></h2>
-        <%= link_to image_tag(post.picture.url(:medium), :class => "class_name"), post_path(post); %><br>
-        <%= @users.find(post.user_id).username %>: <%= post.caption %><br><br>
+    <% user.posts.each do |photo| %>
+      <% allPosts << photo %>
+    <% end %>
+  <% end %>
+  <%# current_user.posts.each do |current_photo| %>
+    <% allPosts << current_user.posts.last %>
+  <%# end %>
+  <% allPosts = allPosts.sort_by &:created_at %>
+  <% allPosts = allPosts.reverse %>
+  <% allPosts.each do |post| %>
+          <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %></h2>
+          <%= link_to image_tag(post.picture.url(:medium), :class => "class_name"), post_path(post); %><br>
+          <%= @users.find(post.user_id).username %>: <%= post.caption %><br><br>
 
-          <% if post.likes.count == 1 %>
-            <%= post.likes.count %> like ||
-            <% else %>
-            <%= post.likes.count %> likes ||
+            <% if post.likes.count == 1 %>
+              <%= post.likes.count %> like ||
+              <% else %>
+              <%= post.likes.count %> likes ||
+            <% end %>
+
+
+            <% if post.comments.count == 1 %>
+              <%= post.comments.count %> <%= link_to 'comment', post_path(post) %>
+              <% else %>
+              <%= post.comments.count %> <%= link_to 'comments', post_path(post) %>
+            <% end %>
+
+
+
+
+      <% if current_user.likes.find_by(post_id: post.id) %>
+        <div class = "unlike_button">
+          <%= form_for @like do |f| %>
+            <%= hidden_field_tag "post", post.id  %>
+            <%= hidden_field_tag "unlike", "unlike" %>
+            <%= f.submit "Unlike!"%><br><br>
           <% end %>
+        </div>
+      <% end %>
 
-
-          <% if post.comments.count == 1 %>
-            <%= post.comments.count %> <%= link_to 'comment', post_path(post) %>
-            <% else %>
-            <%= post.comments.count %> <%= link_to 'comments', post_path(post) %>
+      <% if !current_user.likes.find_by(post_id: post.id) %>
+        <div class = "like_button">
+          <%= form_for @like do |f| %>
+            <%= hidden_field_tag "post", post.id  %>
+            <%= hidden_field_tag "like", "like" %>
+            <%= f.submit "Like!"%> <br><br>
           <% end %>
-
-
-
-
-    <% if current_user.likes.find_by(post_id: post.id) %>
-      <div class = "unlike_button">
-        <%= form_for @like do |f| %>
-          <%= hidden_field_tag "post", post.id  %>
-          <%= hidden_field_tag "unlike", "unlike" %>
-          <%= f.submit "Unlike!"%><br><br>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% if !current_user.likes.find_by(post_id: post.id) %>
-      <div class = "like_button">
-        <%= form_for @like do |f| %>
-          <%= hidden_field_tag "post", post.id  %>
-          <%= hidden_field_tag "like", "like" %>
-          <%= f.submit "Like!"%> <br><br>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% end %>
+        </div>
+      <% end %>
+    <%# end %>
   <% end %>
 
 </center>
