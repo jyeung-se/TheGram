@@ -20,7 +20,12 @@ class LikesController < ApplicationController
       delete_me = current_user.likes.find_by(post_id: @post.id)
       delete_me.destroy
     end
-    redirect_to posts_path
+    
+    if params[:user_id]
+      redirect_to user_path(params[:user_id])
+    else
+      redirect_to posts_path
+    end
   end
 
 end

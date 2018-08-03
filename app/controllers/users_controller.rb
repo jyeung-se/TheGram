@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     if @user.id != params[:id]
       @user = User.find_by(id: params[:id])
+      @like = Like.new
     else
       render :show
     end
