@@ -12,9 +12,22 @@
         <h2> <%= image_tag @users.find(post.user_id).avatar.url(:real_small), class:"avater"  %> <%= link_to @users.find(post.user_id).username, user_path(post.user_id) %></h2>
         <%= link_to image_tag(post.picture.url(:medium), :class => "class_name"), post_path(post); %><br>
         <%= @users.find(post.user_id).username %>: <%= post.caption %><br><br>
-        <% if post.likes.any? %>
-          Likes: <%= post.likes.count %>
-        <% end %>
+
+          <% if post.likes.count == 1 %>
+            <%= post.likes.count %> like ||
+            <% else %>
+            <%= post.likes.count %> likes ||
+          <% end %>
+
+
+          <% if post.comments.count == 1 %>
+            <%= post.comments.count %> <%= link_to 'comment', post_path(post) %>
+            <% else %>
+            <%= post.comments.count %> <%= link_to 'comments', post_path(post) %>
+          <% end %>
+
+
+
 
     <% if current_user.likes.find_by(post_id: post.id) %>
       <div class = "unlike_button">
