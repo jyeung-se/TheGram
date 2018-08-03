@@ -1,5 +1,11 @@
 <center>
-  <%= link_to "All users", users_path %>
+  <%= link_to "Search Users", users_path %>
+  <br><br>
+  <% if current_user.following.count == 0 %>
+   <h2>Oh no!</h2>
+   <p>It looks like you aren't following anyone.</p>
+   <p>Click 'All Users' at the top to search for people to follow!</p>
+  <% end %>
 
   <% current_user.following.reverse.each do |user| %>
       <% user.posts.each do |post| %>

@@ -1,6 +1,7 @@
 <center>
+   <%= link_to "Search Users", users_path %>
+ <br><br>
 
- <br>
  <%= image_tag @user.avatar.url(:thumb), class:"avater"  %> <h2><%= @user.username %> | <%= @user.posts.count %> <%= "Posts" %> | <%= @user.following.count %> <%= link_to "Following", following_path(@user) %> | <%= @user.followers.count %> <%= link_to "Followers", followers_path(@user) %> |<br></h2>
 
 
@@ -9,8 +10,15 @@
 
 <% if @user.id == session[:logged_in_user_id] %>
   <%= link_to "New Post", new_post_path %> | | <%= link_to "Edit User", edit_user_path(@user) %> | |
-  <%= link_to 'Delete Account', user_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <%= link_to 'Delete Account', user_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br><br><br>
+  <% if current_user.following.count == 0 && current_user.posts.count == 0 %>
+    <p>Clicking 'TheGram' at the top will take you to the feed.</p>
+    <p>Click 'New Post' to post a new photo or 'Search Users' to find accounts to follow. </p>
+  <% end %><br>
 <% end %>
+
+
 
 <!-- TEMPORARILY DELETE THE BELOW RENDER PARTIALS TO BE ABLE TO SEE ALL SHOW PAGES FUNCTIONING -->
 <%= render partial: "follow" %>

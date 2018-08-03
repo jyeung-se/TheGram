@@ -1,3 +1,10 @@
+font-family: 'Gloria Hallelujah', cursive;
+
+. {
+  font-family: 'Gloria Hallelujah', serif;
+  font-size: 48px;
+}
+
 .avater {
     border-radius: 50%;
     width: 77px;
