@@ -32,6 +32,7 @@ end
       flash[:notice] = "Account created!"
       redirect_to posts_path
     else
+      flash[:notice] = "Please include both a caption and a photo."
       render :new
     end
   end

@@ -1,3 +1,9 @@
 <center><h2>Create New Post</h2><center>
 
+
+<% if flash[:notice] %>
+  <font color="red"><b><%= flash[:notice] %></b></font>
+<% end %>
+
+
 <%= render partial: "form" %>

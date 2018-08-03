@@ -31,5 +31,5 @@
 <% posts = @user.posts.reverse %>
 <% posts.each do |post| %>
       <%= link_to image_tag(post.picture.url(:medium), :class => "class_name"), post_path(post); %><br><br>
-  Caption: <%= post.caption %><br><br><br><br>
+<%= post.caption %><br><br><br><br>
 <% end %></center>
