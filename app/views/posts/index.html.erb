@@ -1,6 +1,11 @@
 <center>
-  <%= link_to "Search Users", users_path %>
-  <br><br>
+  <%= link_to "Search Users", users_path %> |  |
+
+  <% if @user.id == session[:logged_in_user_id] %>
+    <%= link_to "New Post", new_post_path %>
+  <% end %>
+    <br><br>
+
   <% if current_user.following.count == 0 %>
    <h2>Oh no!</h2>
    <p>It looks like you aren't following anyone.</p>
