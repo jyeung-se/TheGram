@@ -3,10 +3,13 @@ class PostsController < ApplicationController
 
   def index
     if logged_in?
-      @posts = Post.all
-      @users = User.all
-      @like = Like.new
-      render :index
+      if current_user.posts.count == 0
+        flash[:notice] = "You know... it would be NICE to contribute to TheGram before looking at others' posts."
+        redirect_to new_post_path
+      end
+        @posts = Post.all
+        @users = User.all
+        @like = Like.new
     else
       redirect_to sessions_path# or force a login
     end
