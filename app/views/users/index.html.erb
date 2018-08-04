@@ -4,7 +4,9 @@
     <%= submit_tag "Search" %>
 <% end %>
 
-<br><br>
+<p>Total users: <%= User.all.count %></p>
+
+<br>
 <h3><u>Users</u></h3>
 
 <%# sort alphabetically, must all be lowercase usernames %>
