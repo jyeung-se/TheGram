@@ -1,6 +1,12 @@
 # TheGram
 
-A Ruby on Rails project created by Sean Conrad and Jack Yeung at Flatiron School and not based off anything in particular
+A Ruby on Rails project created by Sean Conrad and Jack Yeung at Flatiron School and not based off anything in particular.
+
+```
+https://thegram.herokuapp.com/
+```
+
+To host it yourself:
 
 You'll need to install ImageMagick through homebrew
 
